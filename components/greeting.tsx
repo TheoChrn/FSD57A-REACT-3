@@ -1,3 +1,8 @@
+type GreetingProps = {
+  name: string;
+  age?: number;
+};
+
 export function Greeting({ name, age }: GreetingProps) {
   const ageCategory = age
     ? age < 18

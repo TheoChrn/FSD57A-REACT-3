@@ -1,10 +1,6 @@
 "use client";
 
 import { Post } from "@/components/post";
-// interface PostsListProps {
-//   posts: IPost[]; // Déclare que `posts` est un tableau d'objets IPost
-// }
-
 import { getPosts } from "@/lib/fetch";
 import { useSuspenseQuery } from "@tanstack/react-query";
 

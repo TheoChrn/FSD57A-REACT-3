@@ -1,7 +1,4 @@
-declare interface GreetingProps {
-  name: string;
-  age?: number;
-}
+
 
 declare interface IPost {
   userId: number;
