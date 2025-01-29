@@ -1,5 +1,6 @@
 "use client";
 import { getQueryClient } from "@/lib/getQueryClient";
+import { ActiveItemStoreProvider } from "@/providers/active-item-store-provider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -10,7 +11,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <ActiveItemStoreProvider>{children}</ActiveItemStoreProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

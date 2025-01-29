@@ -26,10 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hyliaSerif.className} antialiased overscroll-none bg-[url('/images/botw-map.png')] bg-top  bg-no-repeat bg-cover min-h-screen`}
+        className={`${hyliaSerif.className} antialiased overscroll-none bg-[url('/images/botw-map.png')] bg-top  bg-no-repeat bg-cover `}
       >
         <Providers>
-          <Container size="lg">
+          <Container
+            size="lg"
+            className="flex items-center justify-center min-h-screen"
+          >
             <Wrapper className="md:flex">
               <Container className="flex-1 space-y-4">
                 <Header />
