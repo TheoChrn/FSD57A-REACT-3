@@ -22,7 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${hyliaSerif.variable} antialiased overscroll-none`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <header>
+            
+          </header>
+          {children}
+          
+          </Providers>
       </body>
     </html>
   );

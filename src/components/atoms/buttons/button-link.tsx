@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/atoms/button";
+import { buttonVariants } from "@/components/atoms/buttons/button";
 import { mergeClasses } from "@/lib/utils";
 import { VariantProps } from "class-variance-authority";
 import Link, { LinkProps } from "next/link";
