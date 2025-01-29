@@ -30,19 +30,19 @@ export default function RootLayout({
       >
         <Providers>
           <Container size="lg">
-            <Wrapper className="">
-              <Container>
+            <Wrapper className="md:flex">
+              <Container className="flex-1 space-y-4">
                 <Header />
-                {children}
+                <main>{children}</main>
               </Container>
-              <Container>
+              <Container id="details" className="flex-1">
                 <Image
                   width={100}
                   height={100}
                   unoptimized
                   src="/images/link.gif"
-                  alt="gif of Link from zelda breath of the wild"
-                  className="mx-auto size-60"
+                  alt="gif of Link from video game Zelda Breath Of The Wild"
+                  className="w-full mx-auto aspect-square max-w-60"
                 />
               </Container>
             </Wrapper>
