@@ -16,9 +16,11 @@ export default async function WeaponsLayout({
   });
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <WeaponsPage />
+      </HydrationBoundary>
       {children}
-      <WeaponsPage />
-    </HydrationBoundary>
+    </>
   );
 }

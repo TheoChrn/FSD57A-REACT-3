@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Image from "next/image";
 import "./globals.css";
+import { Card } from "@/components/atoms/card/card";
 
 const hyliaSerif = localFont({
   src: "../../public/fonts/HyliaSerifBeta-Regular.otf",
@@ -31,26 +32,26 @@ export default function RootLayout({
         <Providers>
           <Container
             size="lg"
-            className="flex items-center justify-center min-h-screen"
+            className="md:flex md:items-center md:justify-center min-h-screen"
           >
-            <Wrapper className="md:flex md:gap-6 space-y-6 md:space-x-0">
-              <Container className="flex-1 space-y-4">
+            <Wrapper className="gap-2 md:gap-6 flex flex-col md:flex-row">
+              <Container className="md:w-1/2 space-y-4 md:space-y-0">
                 <Header />
                 <main>{children}</main>
               </Container>
-              <Container className="flex-1 space-y-4">
+              <Container className="relative md:w-1/2 flex-1 flex flex-col gap-4 py-3">
                 <Image
-                  width={100}
-                  height={100}
+                  width={50}
+                  height={50}
                   unoptimized
                   src="/images/link.gif"
                   alt="gif of Link from video game Zelda Breath Of The Wild"
-                  className="w-full mx-auto aspect-square max-w-60"
+                  className="hidden md:inline md:absolute w-full top-0"
                 />
-                <div
+                <Card
                   id="details"
-                  className="px-4 py-2 border border-double bg-black"
-                ></div>
+                  className="flex h-1/2 flex-col z-[1] mt-auto px-4 py-2 text-white"
+                />
               </Container>
             </Wrapper>
           </Container>

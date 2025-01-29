@@ -14,14 +14,20 @@ declare interface IEquipmentSchema {
   dlc: boolean;
 }
 
-declare interface IEquipmentResponse {
+declare interface IEquipmentsResponse {
   data: IEquipmentSchema[];
   status: number;
   message: string;
 }
 
-declare interface IChunkedEquipmentResponse {
+declare interface IChunkedEquipmentsResponse {
   data: IEquipmentSchema[][];
+  status: number;
+  message: string;
+}
+
+declare interface IEquipmentResponse {
+  data: IEquipmentSchema;
   status: number;
   message: string;
 }

@@ -9,7 +9,7 @@ export function Card({
     <article
       className={mergeClasses(
         className,
-        "border-2 cursor-pointer  overflow-hidden bg-background/50 rounded-xs border-double border-black/80"
+        "cursor-pointer  bg-black/40 rounded-xs ring-2 ring-offset-1 ring-black/80 ring-offset-background/50"
       )}
       {...props}
     />

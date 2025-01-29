@@ -6,20 +6,21 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
 export function WeaponsPage() {
-  const { data } = useSuspenseQuery({
+  const { data, isLoading, error } = useSuspenseQuery({
     queryKey: ["weapons"],
     queryFn: getWeapons,
+    staleTime: Infinity,
   });
 
   const chunks = data.data;
 
   return (
     <>
-      <div className="flex flex-nowrap overflow-x-auto snap-x snap-proximity">
+      <div className="flex flex-nowrap p-3 gap-1 overflow-x-auto snap-x snap-proximity">
         {chunks.map((chunk, index) => (
           <ul
             key={index}
-            className="grid snap-center not-first:pl-1 basis-[100%] shrink-0  grid-cols-[repeat(5,1fr)] gap-1 aspect-[5/4] "
+            className="grid snap-center not-first:pl-1 basis-[100%] shrink-0  grid-cols-[repeat(5,1fr)] gap-3 aspect-[5/4] "
           >
             {chunk.map((equipment) => (
               <li key={equipment.id}>

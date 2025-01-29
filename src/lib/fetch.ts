@@ -1,8 +1,8 @@
 import { API_URL } from "@/lib/utils";
 import axios from "axios";
 
-export const getWeapons = async (): Promise<IChunkedEquipmentResponse> => {
-  const res = await axios.get<IEquipmentResponse>(
+export const getWeapons = async (): Promise<IChunkedEquipmentsResponse> => {
+  const res = await axios.get<IEquipmentsResponse>(
     `${API_URL}/category/equipment`
   );
 
@@ -13,4 +13,11 @@ export const getWeapons = async (): Promise<IChunkedEquipmentResponse> => {
   );
 
   return { ...res.data, data: chunks };
+};
+
+export const getWeaponById = async (
+  id: string
+): Promise<IEquipmentResponse> => {
+  const res = await axios.get<IEquipmentResponse>(`${API_URL}/entry/${id}`);
+  return res.data;
 };

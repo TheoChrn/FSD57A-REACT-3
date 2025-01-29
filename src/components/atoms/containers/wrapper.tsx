@@ -7,7 +7,7 @@ export function Wrapper({
 }: ComponentPropsWithoutRef<"div">) {
   return (
     <div
-      className={mergeClasses(className, "max-w-screen-md mx-auto")}
+      className={mergeClasses(className, "max-w-screen-lg mx-auto")}
       {...props}
     />
   );
