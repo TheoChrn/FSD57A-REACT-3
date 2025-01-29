@@ -1,7 +1,7 @@
-import Providers from "@/providers";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Providers from "@/providers/providers";
 
 const hyliaSerif = localFont({
   src: "./fonts/HyliaSerifBeta-Regular.otf",
