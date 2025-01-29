@@ -1,12 +1,15 @@
+"use client";
+
+import { Card } from "@/components/atoms/card/card";
 import Image from "next/image";
 
-type CardProps = {
+type ItemCardProps = {
   equipment: IEquipmentSchema;
 };
 
-export function Card({ equipment }: CardProps) {
+export function ItemCard({ equipment }: ItemCardProps) {
   return (
-    <article className="border-2  overflow-hidden bg-background/50 rounded-xs border-double border-black/80">
+    <Card>
       <Image
         src={equipment.image}
         alt={equipment.name}
@@ -15,6 +18,6 @@ export function Card({ equipment }: CardProps) {
         loading="lazy"
         className="size-full"
       />
-    </article>
+    </Card>
   );
 }

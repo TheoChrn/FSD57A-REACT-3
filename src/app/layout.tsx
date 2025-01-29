@@ -33,12 +33,12 @@ export default function RootLayout({
             size="lg"
             className="flex items-center justify-center min-h-screen"
           >
-            <Wrapper className="md:flex">
+            <Wrapper className="md:flex md:gap-6 space-y-6 md:space-x-0">
               <Container className="flex-1 space-y-4">
                 <Header />
                 <main>{children}</main>
               </Container>
-              <Container id="details" className="flex-1">
+              <Container className="flex-1 space-y-4">
                 <Image
                   width={100}
                   height={100}
@@ -47,6 +47,10 @@ export default function RootLayout({
                   alt="gif of Link from video game Zelda Breath Of The Wild"
                   className="w-full mx-auto aspect-square max-w-60"
                 />
+                <div
+                  id="details"
+                  className="px-4 py-2 border border-double bg-black"
+                ></div>
               </Container>
             </Wrapper>
           </Container>

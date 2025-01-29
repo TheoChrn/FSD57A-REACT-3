@@ -1,8 +1,9 @@
 "use client";
 
-import { Card } from "@/components/templates/card";
+import { ItemCard } from "@/components/molecules/item-card";
 import { getWeapons } from "@/lib/fetch";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 export function WeaponsPage() {
   const { data } = useSuspenseQuery({
@@ -22,7 +23,9 @@ export function WeaponsPage() {
           >
             {chunk.map((equipment) => (
               <li key={equipment.id}>
-                <Card equipment={equipment} />
+                <Link href={`/weapons/${equipment.id}`}>
+                  <ItemCard equipment={equipment} />
+                </Link>
               </li>
             ))}
           </ul>

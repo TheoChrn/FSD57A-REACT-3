@@ -5,22 +5,22 @@ export function Header() {
   return (
     <header className="overflow-x-auto">
       <nav className="flex justify-center px-2  pb-4 gap-8 border-b-1 border-background/30 w-fit mx-auto ">
-        <IconLink href="weapons">
+        <IconLink href="/weapons">
           <SwordIcon size={30} />
         </IconLink>
-        <IconLink href="materials">
+        <IconLink href="/materials">
           <SwordIcon size={30} />
         </IconLink>
-        <IconLink href="creatures">
+        <IconLink href="/creatures">
           <SwordIcon size={30} />
         </IconLink>
-        <IconLink href="monsters">
+        <IconLink href="/monsters">
           <SwordIcon size={30} />
         </IconLink>
-        <IconLink href="treasure">
+        <IconLink href="/treasure">
           <SwordIcon size={30} />
         </IconLink>
-        <IconLink href="search">
+        <IconLink href="/search">
           <SwordIcon size={30} />
         </IconLink>
       </nav>
