@@ -2,7 +2,7 @@ import { mergeClasses } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { ComponentPropsWithoutRef } from "react";
 
-const containerVariant = cva("", {
+export const containerVariant = cva("", {
   variants: {
     size: {
       "2xs": "p-2",
