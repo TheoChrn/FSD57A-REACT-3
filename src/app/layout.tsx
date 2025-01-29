@@ -1,19 +1,16 @@
+import { Container } from "@/components/atoms/containers/container";
+import { Wrapper } from "@/components/atoms/containers/wrapper";
+import { Header } from "@/components/organisms/header";
+import Providers from "@/providers/providers";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
-import Providers from "@/providers/providers";
-import { Wrapper } from "@/components/atoms/containers/wrapper";
-import { IconLink } from "@/components/atoms/buttons/icon-link";
 import Image from "next/image";
-import { ButtonLink } from "@/components/atoms/buttons/button-link";
-import { SwordIcon } from "@/components/atoms/icons/sword-icon";
-import { Container } from "@/components/atoms/containers/container";
-import { Header } from "@/components/organisms/header";
+import "./globals.css";
 
 const hyliaSerif = localFont({
-  src: "../fonts/HyliaSerifBeta-Regular.otf",
-  variable: "--font-hylia-serif",
-  weight: "100, 200,300,400,500,600,700,800 900",
+  src: "../../public/fonts/HyliaSerifBeta-Regular.otf",
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -29,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hyliaSerif.variable} antialiased overscroll-none bg-[url('/images/botw-map.png')] bg-top  bg-no-repeat bg-cover min-h-screen`}
+        className={`${hyliaSerif.className} antialiased overscroll-none bg-[url('/images/botw-map.png')] bg-top  bg-no-repeat bg-cover min-h-screen`}
       >
         <Providers>
           <Container size="lg">
