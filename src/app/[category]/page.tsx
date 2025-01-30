@@ -3,24 +3,22 @@ import { getWeapons } from "@/lib/fetch";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-export default async function WeaponsLayout({
-  children,
+export default async function CategoryPage({
+  params: { category },
 }: {
-  children: React.ReactNode;
+  params: {
+    category: string;
+  };
 }) {
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["weapons"],
+    queryKey: [category],
     queryFn: getWeapons,
   });
-
   return (
-    <>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <WeaponsPage />
-      </HydrationBoundary>
-      {children}
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <WeaponsPage />
+    </HydrationBoundary>
   );
 }

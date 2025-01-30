@@ -1,26 +1,18 @@
 import { createStore } from "zustand/vanilla";
 
 export type FavoritesState = {
-  favorites: {
-    title: string;
-    description: string;
-    properties: {
-      attack: number;
-      defense: number;
-      effect: string;
-      type: string;
-    };
-  } | null;
+  favorites: number[];
 };
 
 export type FavoritesActions = {
-  setFavorites: (favorites: NonNullable<FavoritesState["favorites"]>) => void;
+  addToFavorites: (id: number) => void;
+  removeFromFavorites: (id: number) => void;
 };
 
 export type FavoritesStore = FavoritesState & FavoritesActions;
 
 export const defaultInitState: FavoritesState = {
-  favorites: null,
+  favorites: [],
 };
 
 export const createFavoritesStore = (
@@ -28,6 +20,14 @@ export const createFavoritesStore = (
 ) => {
   return createStore<FavoritesStore>()((set) => ({
     ...initState,
-    setFavorites: () => set((state) => ({ favorites: state.favorites })),
+    addToFavorites: (id) => {
+      set((state) => ({
+        favorites: [...state.favorites, id],
+      }));
+    },
+    removeFromFavorites: (id) =>
+      set((state) => ({
+        favorites: state.favorites.filter((prevId) => prevId !== id),
+      })),
   }));
 };

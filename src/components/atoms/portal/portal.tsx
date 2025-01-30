@@ -9,9 +9,7 @@ type ClientPortalInterface = {
 
 export const Portal = ({ children, selector }: ClientPortalInterface) => {
   const ref = useRef<Element | null>(null);
-  const [client, setIsClient] = useState(false);
-  console.log(selector);
-  console.log(ref.current);
+  const [_, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
     ref.current = document.getElementById(selector);

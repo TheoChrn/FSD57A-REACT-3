@@ -9,7 +9,7 @@ export function Card({
     <article
       className={mergeClasses(
         className,
-        "cursor-pointer  bg-black/40 rounded-xs ring-2 ring-offset-1 ring-black/80 ring-offset-background/50"
+        "bg-black/40 rounded-xs ring-2 ring-offset-1 ring-black/40 ring-offset-background/30"
       )}
       {...props}
     />

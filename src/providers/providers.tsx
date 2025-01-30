@@ -13,7 +13,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <FavoritesStoreProvider>{children}</FavoritesStoreProvider>
-      <ReactQueryDevtools />
+      <ReactQueryDevtools initialIsOpen />
     </QueryClientProvider>
   );
 }

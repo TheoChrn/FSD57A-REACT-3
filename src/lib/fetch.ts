@@ -1,7 +1,7 @@
 import { API_URL } from "@/lib/utils";
 import axios from "axios";
 
-export const getWeapons = async (): Promise<IChunkedEquipmentsResponse> => {
+export const getWeapons = async (): Promise<IEquipmentSchema[][]> => {
   const res = await axios.get<IEquipmentsResponse>(
     `${API_URL}/category/equipment`
   );
@@ -12,12 +12,10 @@ export const getWeapons = async (): Promise<IChunkedEquipmentsResponse> => {
     weapons.splice(0, 20)
   );
 
-  return { ...res.data, data: chunks };
+  return chunks;
 };
 
-export const getWeaponById = async (
-  id: string
-): Promise<IEquipmentResponse> => {
+export const getWeaponById = async (id: string): Promise<IEquipmentSchema> => {
   const res = await axios.get<IEquipmentResponse>(`${API_URL}/entry/${id}`);
-  return res.data;
+  return res.data.data;
 };
