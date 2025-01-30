@@ -1,34 +1,41 @@
 "use client";
 
 import { Card } from "@/components/atoms/card/card";
-import { getWeapons } from "@/lib/fetch";
+import { fetches, FetchesKey } from "@/lib/fetch-mapping";
+import { createChunk } from "@/lib/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function WeaponsPage() {
+
+export function ItemsPage({ category }: { category: string }) {
   const pathname = usePathname();
-  const { data: chunks } = useSuspenseQuery({
-    queryKey: ["weapons"],
-    queryFn: getWeapons,
+
+  const { data } = useSuspenseQuery({
+    queryKey: [category],
+    queryFn: fetches[category as FetchesKey],
   });
+
+  const chunks = createChunk(data);
 
   return (
     <>
       {chunks.map((chunk, index) => (
         <ul
           key={index}
-          className="grid snap-center not-first:pl-1 basis-[100%] shrink-0  grid-cols-[repeat(5,1fr)] gap-3 aspect-[5/4] "
+          className="grid snap-center  basis-[100%] shrink-0  grid-cols-5 gap-3 "
         >
           {chunk.map((equipment) => (
             <li key={equipment.id}>
-              <Link href={`/weapons/${equipment.id}`}>
+              <Link href={`/${category}/${equipment.id}`}>
                 <Card
                   aria-current={
-                    pathname.includes(String(equipment.id)) ? "page" : undefined
+                    Number(pathname.split("/")[2]) === equipment.id
+                      ? "page"
+                      : undefined
                   }
-                  className="aria-page:ring-offset-white"
+                  className="aria-page:ring-offset-white aria-page:ring-white"
                 >
                   <Image
                     src={equipment.image}

@@ -1,5 +1,6 @@
-import { WeaponsPage } from "@/components/pages/weapons/weapons";
-import { getWeapons } from "@/lib/fetch";
+import { ItemsPage } from "@/components/pages/[category]/items";
+import { fetches, FetchesKey } from "@/lib/fetch-mapping";
+
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
@@ -14,11 +15,11 @@ export default async function CategoryPage({
 
   await queryClient.prefetchQuery({
     queryKey: [category],
-    queryFn: getWeapons,
+    queryFn: fetches[category as FetchesKey],
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <WeaponsPage />
+      <ItemsPage category={category} />
     </HydrationBoundary>
   );
 }

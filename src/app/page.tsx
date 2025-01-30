@@ -1,4 +1,6 @@
+import { redirect } from "next/navigation";
 
 export default async function Home() {
-  return <div className="space-y-8 max-w-screen-lg mx-auto"></div>;
+  redirect("/equipments");
+  return null;
 }

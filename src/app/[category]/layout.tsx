@@ -7,7 +7,7 @@ export default function CategoryLayout(props: {
 }) {
   return (
     <>
-      <Container className="flex  flex-nowrap p-3 gap-1 overflow-x-auto snap-x snap-proximity">
+      <Container className="flex  flex-nowrap p-3 gap-3 overflow-x-auto snap-x snap-proximity">
         {props.children}
       </Container>
       <Card className="flex flex-col gap-1 md:h-1/2 md:self-end px-4 py-2 text-white">

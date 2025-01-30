@@ -1,27 +1,57 @@
 import { IconLink } from "@/components/atoms/buttons/icon-link";
 import { SwordIcon } from "@/components/atoms/icons/sword-icon";
+import { FaAppleAlt } from "react-icons/fa";
+import { GiDeerHead } from "react-icons/gi";
+import { GiTroll } from "react-icons/gi";
+import { GiChest } from "react-icons/gi";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { cardVariant } from "@/components/atoms/card/card";
+import { PiHeartFill } from "react-icons/pi";
 
 export function Header() {
   return (
-    <header className="overflow-x-auto w-1/2 px-3">
-      <nav className="flex justify-between px-2 w-full pb-4 gap-8 border-b-1 border-background/30 ">
-        <IconLink href="/weapons">
+    <header
+      className={cardVariant({ className: "overflow-x-auto w-1/2 py-3 px-5" })}
+    >
+      <nav className="flex justify-between w-full  gap-8 border-background/30 ">
+        <IconLink href="/equipments">
           <SwordIcon size={40} />
         </IconLink>
         <IconLink href="/materials">
-          <SwordIcon size={40} />
+          <FaAppleAlt
+            className="group-aria-page:fill-background fill-background/30 "
+            size={40}
+          />
         </IconLink>
         <IconLink href="/creatures">
-          <SwordIcon size={40} />
+          <GiDeerHead
+            className="group-aria-page:fill-background fill-background/30"
+            size={40}
+          />
         </IconLink>
         <IconLink href="/monsters">
-          <SwordIcon size={40} />
+          <GiTroll
+            className="group-aria-page:fill-background fill-background/30"
+            size={40}
+          />
         </IconLink>
-        <IconLink href="/treasure">
-          <SwordIcon size={40} />
+        <IconLink href="/treasures">
+          <GiChest
+            className="group-aria-page:fill-background fill-background/30"
+            size={40}
+          />
         </IconLink>
         <IconLink href="/search">
-          <SwordIcon size={40} />
+          <FaMagnifyingGlass
+            className="group-aria-page:fill-background fill-background/30"
+            size={40}
+          />
+        </IconLink>
+        <IconLink href="/favorites">
+          <PiHeartFill
+            className="group-aria-page:fill-background fill-background/30"
+            size={40}
+          />
         </IconLink>
       </nav>
     </header>
