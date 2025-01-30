@@ -1,13 +1,12 @@
 "use client";
 
-import { Card } from "@/components/atoms/card/card";
+import { Card, cardVariant } from "@/components/atoms/card/card";
 import { fetches, FetchesKey } from "@/lib/fetch-mapping";
 import { createChunk } from "@/lib/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 
 export function ItemsPage({ category }: { category: string }) {
   const pathname = usePathname();
@@ -18,6 +17,17 @@ export function ItemsPage({ category }: { category: string }) {
   });
 
   const chunks = createChunk(data);
+
+  if (!chunks.length || !chunks[0].length)
+    return (
+      <ul className="grid grid-cols-5 gap-3 w-full">
+        {Array.from({ length: 20 }).map((_, index) => (
+          <li key={index} className="aspect-square">
+            <div className={cardVariant({ className: "h-full" })} />
+          </li>
+        ))}
+      </ul>
+    );
 
   return (
     <>

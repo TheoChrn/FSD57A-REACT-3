@@ -11,7 +11,9 @@ import { PiHeartFill } from "react-icons/pi";
 export function Header() {
   return (
     <header
-      className={cardVariant({ className: "overflow-x-auto w-1/2 py-3 px-5" })}
+      className={cardVariant({
+        className: "overflow-x-auto md:w-1/2 py-3 px-5",
+      })}
     >
       <nav className="flex justify-between w-full  gap-8 border-background/30 ">
         <IconLink href="/equipments">

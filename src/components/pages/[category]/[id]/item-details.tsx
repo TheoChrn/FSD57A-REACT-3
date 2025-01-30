@@ -19,48 +19,36 @@ export function ItemPage({ id, category }: { id: string; category: string }) {
   const { data } = useSuspenseQuery({
     queryKey: [category, id],
     queryFn: () => fetchesById[category as FetchesKey](id),
-    staleTime: Infinity,
   });
 
   const { mutate } = useMutation({
     mutationFn: async () => {
       await queryClient.cancelQueries({ queryKey: [category] });
 
-      const optimisticItem = queryClient.setQueryData(
+      const updatedItem: CategorySchema = queryClient.setQueryData(
         [category, id],
-        (old: CategorySchema) => {
+        (old?: CategorySchema) => {
+          if (!old) return old;
+
           return {
             ...old,
             favorites: true,
           };
         }
-      );
+      )!;
 
-      // const optimisticList = queryClient.setQueryData(
-      //   [category],
-      //   (oldData: CategorySchema[]) => {
-      //     return [...oldData, optimisticItem];
-      //   }
-      // );
-
-      return { optimisticItem };
+      return updatedItem;
     },
-    onSuccess: (result, variables, context) => {
-      console.log(context);
-      // queryClient.setQueryData([category, id], result);
-      // queryClient.setQueryData([category], (old: CategorySchema[]) =>
-      //   old.map((item) =>
-      //     item.id === context.optimisticItem.id ? result : item
-      //   )
-      // );
+    onSuccess: (result) => {
+      console.log(result);
+      queryClient.setQueryData([category, id], result);
+      queryClient.setQueryData([category], (old: CategorySchema[]) =>
+        old.map((item) => (item.id === result.id ? result : item))
+      );
     },
     onError: (error, newItems, context) => {
       console.log(context);
       console.log(error);
-      // queryClient.setQueryData([category, id], context.optimisticItem);
-      // queryClient.setQueryData([category], (old: CategorySchema[]) =>
-      //   old.filter((item) => item.id !== context.optimisticItem.id)
-      // );
     },
   });
 

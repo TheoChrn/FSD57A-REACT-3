@@ -18,6 +18,7 @@ declare interface EquipmentSchema {
     type: string;
   };
   dlc: boolean;
+  favorites?: boolean;
 }
 
 declare interface MaterialsSchema {
@@ -31,6 +32,7 @@ declare interface MaterialsSchema {
   cooking_effect: string;
   dlc: boolean;
   fuse_attack_power?: number;
+  favorites?: boolean;
 }
 
 interface CreatureSchema {
@@ -43,6 +45,7 @@ interface CreatureSchema {
   edible: boolean;
   drops: string[] | null;
   dlc: boolean;
+  favorites?: boolean;
 }
 
 interface MonsterSchema {
@@ -54,6 +57,7 @@ interface MonsterSchema {
   common_locations: string[] | null;
   drops: string[] | null;
   dlc: boolean;
+  favorites?: boolean;
 }
 
 interface TreasureSchema {
@@ -65,6 +69,7 @@ interface TreasureSchema {
   common_locations: string[] | null;
   drops: string[] | null;
   dlc: boolean;
+  favorites?: boolean;
 }
 
 declare type CategorySchema =
