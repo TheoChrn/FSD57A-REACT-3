@@ -1,8 +1,11 @@
-import { buttonVariants } from "@/components/atoms/buttons/button";
 import { mergeClasses } from "@/lib/utils";
-import { VariantProps } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import Link, { LinkProps } from "next/link";
 import { ComponentPropsWithoutRef } from "react";
+
+export const buttonVariants = cva(
+  "inline-flex px-3 py-2 items-center cursor-pointer justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+);
 
 interface ButtonLinkProps
   extends Omit<ComponentPropsWithoutRef<"a">, "href">,
@@ -11,12 +14,8 @@ interface ButtonLinkProps
 
 export const ButtonLink = ({
   className,
-  variant,
-  size,
+
   ...props
 }: ButtonLinkProps) => (
-  <Link
-    className={mergeClasses(buttonVariants({ variant, size, className }))}
-    {...props}
-  />
+  <Link className={mergeClasses(buttonVariants({ className }))} {...props} />
 );
