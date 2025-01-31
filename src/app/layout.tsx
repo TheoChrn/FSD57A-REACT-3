@@ -1,10 +1,6 @@
-import { Container } from "@/components/atoms/containers/container";
-import { Wrapper } from "@/components/atoms/containers/wrapper";
-import { Header } from "@/components/organisms/header";
 import Providers from "@/providers/providers";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Image from "next/image";
 import "./globals.css";
 
 const hyliaSerif = localFont({
@@ -28,27 +24,7 @@ export default function RootLayout({
       <body
         className={`${hyliaSerif.className} antialiased overscroll-none bg-[url('/images/botw-bg.webp')] bg-top  bg-no-repeat bg-cover `}
       >
-        <Providers>
-          <Container
-            size="lg"
-            className="md:flex md:items-center md:justify-center min-h-screen"
-          >
-            <Wrapper className="w-full">
-              <Header />
-              <main className="relative grid md:grid-cols-2 h-fit gap-4">
-                {children}
-                <Image
-                  width={50}
-                  height={50}
-                  unoptimized
-                  src="/images/link.gif"
-                  alt="gif of Link from video game Zelda Breath Of The Wild"
-                  className="hidden md:inline md:absolute  md:w-1/2 bottom-0 -z-1 right-0"
-                />
-              </main>
-            </Wrapper>
-          </Container>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
