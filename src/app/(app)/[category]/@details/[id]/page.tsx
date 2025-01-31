@@ -1,6 +1,5 @@
 import { ItemsDetailsPage } from "@/components/pages/[category]/[id]/item-details-page";
 import { getEntryById } from "@/lib/fetch";
-import { ValidCategoryKey } from "@/lib/category-enum";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 

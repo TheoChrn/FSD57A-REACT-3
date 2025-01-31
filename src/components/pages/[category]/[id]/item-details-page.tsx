@@ -30,6 +30,8 @@ export function ItemsDetailsPage({
         }
         return [...old, data];
       });
+
+      // Return promise to satisfie mutationFn types
       return Promise.resolve(data);
     },
 
@@ -41,6 +43,8 @@ export function ItemsDetailsPage({
 
       return { previousFavorites };
     },
+
+    // Update favorites properties and create/remove a favorite item cache
     onSuccess: (result) => {
       // Update Current Item
       queryClient.setQueryData([category, id], result);
