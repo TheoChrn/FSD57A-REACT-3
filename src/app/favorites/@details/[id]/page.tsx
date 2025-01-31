@@ -1,14 +1,9 @@
 "use client";
 
-import { Container } from "@/components/atoms/containers/container";
-import { Paragraph } from "@/components/atoms/paragraph";
-import { Title } from "@/components/atoms/title/title";
 import { ItemsDetails } from "@/components/organisms/items-details";
-import { Details } from "@/components/templates/details";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { PiHeartStraightFill } from "react-icons/pi";
 
 export default function FavoritePage({
   params: { id },
@@ -68,11 +63,10 @@ export default function FavoritePage({
 
       router.push("/favorites");
     },
-    onError: (error, variables, context) => {
+    onError: (_, __, context) => {
       queryClient.setQueryData(["favorites"], context?.previousFavorites);
     },
-    onSettled: (data, variables, context) =>
-      queryClient.invalidateQueries({ queryKey: ["favorites"] }),
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ["favorites"] }),
   });
 
   if (isLoading) return "Loading...";

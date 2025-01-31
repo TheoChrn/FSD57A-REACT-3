@@ -46,16 +46,18 @@ export function ItemsDetailsPage({
       queryClient.setQueryData([category, id], result);
 
       // Update Favorite Item
-      result.favorites
-        ? queryClient.setQueryData(["favorites", id], result)
-        : queryClient.removeQueries({ queryKey: ["favorites", id] });
+      if (result.favorites) {
+        queryClient.setQueryData(["favorites", id], result);
+      } else {
+        queryClient.removeQueries({ queryKey: ["favorites", id] });
+      }
 
       //Update items in list
       queryClient.setQueryData([category], (old: CategorySchema[]) =>
         old.map((item) => (item.id === result.id ? result : item))
       );
     },
-    onError: (error, variables, context) => {
+    onError: (_, __, context) => {
       queryClient.setQueryData(
         ["favorites"],
         context?.previousFavorites ?? null
