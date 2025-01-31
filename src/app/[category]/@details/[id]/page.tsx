@@ -1,4 +1,4 @@
-import { ItemPage } from "@/components/pages/[category]/[id]/item-details";
+import { ItemsDetailsPage } from "@/components/pages/[category]/[id]/item-details-page";
 import { fetchesById, ValidCategoryKey } from "@/lib/fetch-mapping";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -20,7 +20,7 @@ export default async function WeaponPage({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ItemPage category={category} id={id} />
+      <ItemsDetailsPage category={category} id={id} />
     </HydrationBoundary>
   );
 }

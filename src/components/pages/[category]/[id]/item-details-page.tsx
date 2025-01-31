@@ -1,15 +1,17 @@
 "use client";
 
-import { Container } from "@/components/atoms/containers/container";
-import { Paragraph } from "@/components/atoms/paragraph";
-import { Title } from "@/components/atoms/title/title";
-import { Details } from "@/components/templates/details";
+import { ItemsDetails } from "@/components/organisms/items-details";
 import { fetchesById, ValidCategoryKey } from "@/lib/fetch-mapping";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
-import { PiHeartStraightFill } from "react-icons/pi";
 
-export function ItemPage({ id, category }: { id: string; category: string }) {
+export function ItemsDetailsPage({
+  id,
+  category,
+}: {
+  id: string;
+  category: string;
+}) {
   const queryClient = getQueryClient();
 
   const { data } = useSuspenseQuery({
@@ -62,24 +64,11 @@ export function ItemPage({ id, category }: { id: string; category: string }) {
   });
 
   return (
-    <>
-      <Container className="flex gap-3 items-center pb-1 border-b-1 ">
-        <Title>{data.name}</Title>
-        <button
-          onClick={() =>
-            mutate({ ...data, favorites: data.favorites ? false : true })
-          }
-          className="cursor-pointer"
-        >
-          <PiHeartStraightFill
-            size={20}
-            aria-checked={data.favorites}
-            className="hover:scale-102 active:scale-98 aria-checked:fill-red-500 duration-200 transition-all stroke-10 stroke-white fill-transparent aria-checked:stroke-red-500"
-          />
-        </button>
-      </Container>
-      <Details data={data} />
-      <Paragraph>{data.description}</Paragraph>
-    </>
+    <ItemsDetails
+      item={data}
+      onClick={() =>
+        mutate({ ...data, favorites: data.favorites ? false : true })
+      }
+    />
   );
 }

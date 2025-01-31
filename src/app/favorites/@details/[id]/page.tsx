@@ -3,6 +3,7 @@
 import { Container } from "@/components/atoms/containers/container";
 import { Paragraph } from "@/components/atoms/paragraph";
 import { Title } from "@/components/atoms/title/title";
+import { ItemsDetails } from "@/components/organisms/items-details";
 import { Details } from "@/components/templates/details";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -81,27 +82,14 @@ export default function FavoritePage({
   if (!favoriteItem) return "Item not found";
 
   return (
-    <div key={favoriteItem.id}>
-      <Container className="flex gap-3 items-center pb-1 border-b-1 ">
-        <Title>{favoriteItem.name}</Title>
-        <button
-          onClick={() =>
-            mutate({
-              ...favoriteItem,
-              favorites: false,
-            })
-          }
-          className="cursor-pointer"
-        >
-          <PiHeartStraightFill
-            size={20}
-            aria-checked={favoriteItem.favorites}
-            className="hover:scale-102 active:scale-98 aria-checked:fill-red-500 duration-200 transition-all stroke-10 stroke-white fill-transparent aria-checked:stroke-red-500"
-          />
-        </button>
-      </Container>
-      <Details data={favoriteItem} />
-      <Paragraph>{favoriteItem.description}</Paragraph>
-    </div>
+    <ItemsDetails
+      item={favoriteItem}
+      onClick={() =>
+        mutate({
+          ...favoriteItem,
+          favorites: false,
+        })
+      }
+    />
   );
 }
