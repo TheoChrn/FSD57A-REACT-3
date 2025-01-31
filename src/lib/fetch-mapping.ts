@@ -11,24 +11,31 @@ import {
   getTreasures,
 } from "@/lib/fetch";
 
+export const validsCategories = [
+  "creatures",
+  "equipment",
+  "materials",
+  "monsters",
+  "treasure",
+] as const;
+
+export type ValidCategoryKey = (typeof validsCategories)[number];
+
 export const fetchesById: Record<
   string,
   (id: string) => Promise<CategorySchema>
 > = {
   creatures: getCreatureById,
-  equipments: getEquipmentById,
+  equipment: getEquipmentById,
   materials: getMaterialById,
   monsters: getMonsterById,
-  treasures: getTreasureById,
+  treasure: getTreasureById,
 };
-export type FetchesByIdKey = keyof typeof fetchesById;
 
 export const fetches: Record<string, () => Promise<CategorySchema[]>> = {
   creatures: getCreatures,
-  equipments: getEquipments,
+  equipment: getEquipments,
   materials: getMaterials,
   monsters: getMonsters,
-  treasures: getTreasures,
+  treasure: getTreasures,
 };
-
-export type FetchesKey = keyof typeof fetches;

@@ -15,7 +15,7 @@ export const IconLink = ({ ...props }: IconLinkProps) => {
   return (
     <Link
       aria-current={isActive ? "page" : undefined}
-      className="group aria-page:relative aria-page:after:absolute aria-page:after:w-full aria-page:after:h-0.25 aria-page:after:scale-x-150 aria-page:after:bg-background aria-page:after:-bottom-4.25"
+      className="group  aria-page:after:bg-background"
       {...props}
     />
   );

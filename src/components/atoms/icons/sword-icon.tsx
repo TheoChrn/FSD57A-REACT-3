@@ -1,4 +1,3 @@
-import { cva } from "class-variance-authority";
 import { ComponentPropsWithoutRef } from "react";
 
 interface IconProps extends ComponentPropsWithoutRef<"svg"> {

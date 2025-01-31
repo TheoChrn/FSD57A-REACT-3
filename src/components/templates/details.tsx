@@ -1,5 +1,5 @@
-import { EquipmentsDetails } from "@/components/organisms/equipments-details";
-import { MaterialsDetails } from "@/components/organisms/materials-details";
+import { EquipmentsDetails } from "@/components/molecules/equipments-details";
+import { MaterialsDetails } from "@/components/molecules/materials-details";
 
 export function Details({ data }: { data: CategorySchema }) {
   if (data.category === "equipment")

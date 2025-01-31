@@ -12,11 +12,11 @@ export function Header() {
   return (
     <header
       className={cardVariant({
-        className: "overflow-x-auto md:w-1/2 py-3 px-5",
+        className: "md:w-1/2 py-3 px-5 overflow-x-auto",
       })}
     >
-      <nav className="flex justify-between w-full  gap-8 border-background/30 ">
-        <IconLink href="/equipments">
+      <nav className="flex justify-between w-full gap-8 border-background/30 ">
+        <IconLink href="/equipment">
           <SwordIcon size={40} />
         </IconLink>
         <IconLink href="/materials">
@@ -37,7 +37,7 @@ export function Header() {
             size={40}
           />
         </IconLink>
-        <IconLink href="/treasures">
+        <IconLink href="/treasure">
           <GiChest
             className="group-aria-page:fill-background fill-background/30"
             size={40}
