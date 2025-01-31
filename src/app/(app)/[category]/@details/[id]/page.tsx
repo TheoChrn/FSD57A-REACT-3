@@ -1,5 +1,6 @@
 import { ItemsDetailsPage } from "@/components/pages/[category]/[id]/item-details-page";
-import { fetchesById, ValidCategoryKey } from "@/lib/fetch-mapping";
+import { getEntryById } from "@/lib/fetch";
+import { ValidCategoryKey } from "@/lib/category-enum";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
@@ -15,7 +16,7 @@ export default async function WeaponPage({
 
   await queryClient.prefetchQuery({
     queryKey: [category, id],
-    queryFn: () => fetchesById[category as ValidCategoryKey](id),
+    queryFn: () => getEntryById(id),
   });
 
   return (

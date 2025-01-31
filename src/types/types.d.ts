@@ -1,4 +1,4 @@
-declare interface Response {
+declare interface Response<T> {
   data: T;
   status: number;
   message: string;

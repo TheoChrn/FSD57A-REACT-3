@@ -1,7 +1,7 @@
 "use client";
 
 import { ItemsDetails } from "@/components/organisms/items-details";
-import { fetchesById, ValidCategoryKey } from "@/lib/fetch-mapping";
+import { getEntryById } from "@/lib/fetch";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 
@@ -16,7 +16,7 @@ export function ItemsDetailsPage({
 
   const { data } = useSuspenseQuery({
     queryKey: [category, id],
-    queryFn: () => fetchesById[category as ValidCategoryKey](id),
+    queryFn: () => getEntryById(id),
   });
 
   const { mutate } = useMutation({

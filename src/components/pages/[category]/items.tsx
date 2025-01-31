@@ -2,14 +2,15 @@
 
 import { ItemsList } from "@/components/organisms/items-list";
 import { EmptyList } from "@/components/templates/empty-list";
-import { fetches, ValidCategoryKey } from "@/lib/fetch-mapping";
+import { getCategoryList } from "@/lib/fetch";
+import { ValidCategoryKey } from "@/lib/category-enum";
 import { createChunk } from "@/lib/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 export function ItemsPage({ category }: { category: string }) {
   const { data } = useSuspenseQuery({
     queryKey: [category],
-    queryFn: fetches[category as ValidCategoryKey],
+    queryFn: () => getCategoryList(category as ValidCategoryKey),
   });
 
   if (!data || (data && !data.length)) {

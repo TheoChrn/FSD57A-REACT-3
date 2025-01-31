@@ -1,9 +1,6 @@
 import { ItemsPage } from "@/components/pages/[category]/items";
-import {
-  fetches,
-  ValidCategoryKey,
-  validsCategories,
-} from "@/lib/fetch-mapping";
+import { getCategoryList } from "@/lib/fetch";
+import { ValidCategoryKey, validsCategories } from "@/lib/category-enum";
 
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -21,7 +18,7 @@ export default async function CategoryPage({
 
   await queryClient.prefetchQuery({
     queryKey: [category],
-    queryFn: fetches[category as ValidCategoryKey],
+    queryFn: () => getCategoryList(category as ValidCategoryKey),
   });
 
   return (
